@@ -5,13 +5,16 @@
 #define NODEARRAR_h_
 
 #include "common.h"
+using namespace std;
 
+
+class RowSet;
 class NodeArray
 {
 public:
-    vector<vector<int> > source;
-    vector<vector<Node> > nodeArray;
-    vector<vector<rowSet> > rowInfs;
+    vector< vector<int> > source;
+    vector< vector<Node> > nodeArray;
+    vector< vector<RowSet> > rowInfs;
     int rows;
     int cols;
 public:
@@ -65,13 +68,14 @@ public:
         }
 
     }
+
     void creatRowInfs()
     {
         for(int row=0;row<rows;row++)
         {
             int set_left=-1;
             int set_right=-1;
-            vector<rowSet> temp;
+            vector<RowSet> temp;
             for(int col=0;col<cols;cols++)
             {
                 if((bool)nodeArray[row][col].high==true)
@@ -79,7 +83,7 @@ public:
                     if(set_left<nodeArray[row][col].left)
                         set_left=nodeArray[row][col].left;
                         set_right=nodeArray[row][col].right;
-                        temp.push_back( rowSet(*this,row,set_left,set_right) );
+                        temp.push_back( RowSet(*this,row,set_left,set_right) );
                 }
             }
         }
@@ -95,6 +99,29 @@ public:
 
 };
 
+class RowSet
+{
+public:
+    const NodeArray &array;
+    int row;
+    int left;
+    int right;
+    int maxHigh;
+public:
+    void computeMaxHigh()
+    {
+        int max=0;
+        for(int col=left;col<=right;col++)
+        {
+            if(max < (array.nodeArray[row][col].high) )
+                max=array.nodeArray[row][col].high;
+        }
+    };
+    RowSet(const NodeArray &_array,int _row,int _left,int _right):array(_array),row(_row),left(_left),right(_right)
+    {
+        computeMaxHigh();
+    };
+};
 
 
 

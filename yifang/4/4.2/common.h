@@ -5,12 +5,14 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <random>
 #include "Node.h"
 #include "NodeArray.h"
 #include "rowSet.h"
 #include "Rectangle.h"
 #include "maxLongLine.h"
 #include "randomMatrix01.h"
+
 
 using namespace std;
 

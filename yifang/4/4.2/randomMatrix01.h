@@ -2,16 +2,16 @@
 #if !defined(RANDOMMATRIX01_H_)
 #define RANDOMMATRIX01_H_
 
-// #include "common.h"
-#include <iostream>
-#include <random>
-#include <vector>
-using namespace  std;
+#include "common.h"
+// #include <iostream>
+// // #include <random>
+// #include <vector>
+// using namespace  std;
 
 class randomMatrix01
 {
   public:
-    vector<vector<int>> martrix;
+    vector<vector<int> > martrix;
     int rows;
     int cols;
 
