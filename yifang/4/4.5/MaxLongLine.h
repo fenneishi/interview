@@ -16,8 +16,6 @@ public:
 
 };
 
-
-
 #endif // MAXLONGLINE_H_
 
 
